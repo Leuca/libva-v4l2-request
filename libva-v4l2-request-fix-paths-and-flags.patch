@@ -1,0 +1,18 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 6448884..91ee97d 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -58,10 +58,10 @@ v4l2_request_drv_video_la_SOURCES = request.c \
+ 	h265.h
+ 
+ v4l2_request_drv_video_la_CFLAGS = -I../include $(DRM_CFLAGS) $(LIBVA_CFLAGS)
+-v4l2_request_drv_video_la_LDFLAGS = -module -avoid-version -no-undefined \
+-				    -Wl,--no-undefined
++v4l2_request_drv_video_la_LDFLAGS = -module -avoid-version -Wl,-soname=libva-v4l2-request.so
+ v4l2_request_drv_video_la_LIBADD = $(DRM_LIBS) $(LIBVA_LIBS)
+ v4l2_request_drv_video_la_LTLIBRARIES = v4l2_request_drv_video.la
+-v4l2_request_drv_video_ladir = /usr/lib/dri/
++v4l2_request_drv_video_ladir = ${libdir}/dri/
++include_HEADERS = ../include/*
+ 
+ MAINTAINERCLEANFILES = Makefile.in autoconfig.h.in
