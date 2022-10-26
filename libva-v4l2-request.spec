@@ -55,7 +55,9 @@ autoreconf -vi
 %{_libdir}/dri/*.so
 
 %files devel
+%if !0%{?fedora}
 %{_libdir}/dri/*.la
+%endif
 %{_includedir}/*.h
 
 %changelog
