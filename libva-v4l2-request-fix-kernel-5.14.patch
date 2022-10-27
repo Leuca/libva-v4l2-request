@@ -1242,28 +1242,30 @@ index 60a63ff..2d5e202 100644
 2.37.3
 
 
-From a7db57d12fd8b3b12a499bc8556a011e6e1ff9ad Mon Sep 17 00:00:00 2001
+From 3705fac47cd0afa6e2e50a2e1e5dbd8d4856bbbe Mon Sep 17 00:00:00 2001
 From: Luca Magrone <luca@magrone.cc>
-Date: Thu, 27 Oct 2022 10:05:44 +0200
+Date: Thu, 27 Oct 2022 10:19:35 +0200
 Subject: [PATCH 14/14] Change default pixel format to hevc
 
 ---
- src/surface.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ src/surface.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/src/surface.c b/src/surface.c
-index 478f0cc..836d351 100644
+index 478f0cc..8d6c196 100644
 --- a/src/surface.c
 +++ b/src/surface.c
-@@ -40,6 +40,7 @@
- #include <va/va_drmcommon.h>
- #include <drm_fourcc.h>
- #include <linux/videodev2.h>
-+#include <linux/media/hevc-ctrls.h>
+@@ -46,6 +46,9 @@
+ #include "v4l2.h"
+ #include "video.h"
  
- #include "media.h"
- #include "utils.h"
-@@ -80,7 +81,7 @@ VAStatus RequestCreateSurfaces2(VADriverContextP context, unsigned int format,
++/* As of kernel 5.14 this macro is not defined in videodev2.h  */
++#define V4L2_PIX_FMT_HEVC_SLICE v4l2_fourcc('S', '2', '6', '5') /* HEVC parsed slices */
++
+ bool SET_FORMAT_OF_OUTPUT_ONCE = false;
+ 
+ VAStatus RequestCreateSurfaces2(VADriverContextP context, unsigned int format,
+@@ -80,7 +83,7 @@ VAStatus RequestCreateSurfaces2(VADriverContextP context, unsigned int format,
  	// 
  	// we declare SET_FORMAT_OF_OUTPUT_ONCE to ensure v4l2_set_format only gets called once
  	// (in the first RequestCreateSurfaces2 call BEFORE any buffers are created later on)
