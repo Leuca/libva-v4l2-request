@@ -1,7 +1,7 @@
 From 71f68c89e16371908d38ea59aca23e5b80a263b6 Mon Sep 17 00:00:00 2001
 From: Philipp Zabel <p.zabel@pengutronix.de>
 Date: Fri, 9 Aug 2019 17:11:25 +0200
-Subject: [PATCH 01/14] v4l2: introduce v4l2_set_controls
+Subject: [PATCH 01/15] v4l2: introduce v4l2_set_controls
 
 This can be used to reduce number of issued ioctls,
 by setting multiple controls at once.
@@ -94,7 +94,7 @@ index 73e9a42..3bccb23 100644
 From 94b6df10506e717c58a65e9807d449dfdbb64c54 Mon Sep 17 00:00:00 2001
 From: Philipp Zabel <p.zabel@pengutronix.de>
 Date: Fri, 23 Aug 2019 14:37:00 +0200
-Subject: [PATCH 02/14] v4l2: introduce v4l2_get_controls
+Subject: [PATCH 02/15] v4l2: introduce v4l2_get_controls
 
 This can be used to query codec mode controls,
 such as decode mode and start code for h.264.
@@ -181,7 +181,7 @@ index 3bccb23..24c12a0 100644
 From 137dc8a830eb0d8ee58ba78e937a0bb82aebc9d7 Mon Sep 17 00:00:00 2001
 From: Philipp Zabel <p.zabel@pengutronix.de>
 Date: Wed, 7 Aug 2019 17:05:47 +0200
-Subject: [PATCH 03/14] h264: update to merged h.264 kernel interface
+Subject: [PATCH 03/15] h264: update to merged h.264 kernel interface
 
 Update to the merged stateless h.264 kernel interface, as of commit
 c3adb85745ca ("media: uapi: h264: Get rid of the p0/b0/b1 ref-lists").
@@ -286,7 +286,7 @@ index 04ba9a6..13662ed 100644
 From b12ca3ef3566616e85d93419bf829958511f44ac Mon Sep 17 00:00:00 2001
 From: Philipp Zabel <p.zabel@pengutronix.de>
 Date: Fri, 9 Aug 2019 17:11:25 +0200
-Subject: [PATCH 04/14] h264: use v4l2_set_controls to reduce number of issued
+Subject: [PATCH 04/15] h264: use v4l2_set_controls to reduce number of issued
  ioctls
 
 Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
@@ -362,7 +362,7 @@ index 25bc8cb..ee6fe33 100644
 From 99d04bd8d0af159193f850954871ed1689ded313 Mon Sep 17 00:00:00 2001
 From: Philipp Zabel <p.zabel@pengutronix.de>
 Date: Fri, 23 Aug 2019 15:33:17 +0200
-Subject: [PATCH 05/14] h264: use v4l2_get_controls to query decode mode and
+Subject: [PATCH 05/15] h264: use v4l2_get_controls to query decode mode and
  start code
 
 Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
@@ -469,7 +469,7 @@ index 35ef31d..004a416 100644
 From d0262de813b51476d8d59caf8b9f2cb0ace001b6 Mon Sep 17 00:00:00 2001
 From: Philipp Zabel <p.zabel@pengutronix.de>
 Date: Fri, 9 Aug 2019 17:59:03 +0200
-Subject: [PATCH 06/14] h264: add H.264 Annex B start codes if required
+Subject: [PATCH 06/15] h264: add H.264 Annex B start codes if required
 
 If the driver reports that it expects H.264 Annex B start codes,
 provide them.
@@ -537,7 +537,7 @@ index aa86265..819fdbd 100644
 From 41e8626ff91af472833c176b2d1a047f5cb9b5b1 Mon Sep 17 00:00:00 2001
 From: Philipp Zabel <p.zabel@pengutronix.de>
 Date: Thu, 29 Aug 2019 17:08:37 +0200
-Subject: [PATCH 07/14] h264: set pic_num in dpb
+Subject: [PATCH 07/15] h264: set pic_num in dpb
 
 Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
 ---
@@ -563,7 +563,7 @@ index 509c876..bd3b6ab 100644
 From fd2b36ab13b59b3b674e411bce6b7f0e82de627a Mon Sep 17 00:00:00 2001
 From: Philipp Zabel <p.zabel@pengutronix.de>
 Date: Thu, 29 Aug 2019 17:11:08 +0200
-Subject: [PATCH 08/14] h264: set frame_num in slice_params
+Subject: [PATCH 08/15] h264: set frame_num in slice_params
 
 Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
 ---
@@ -589,7 +589,7 @@ index bd3b6ab..ecbb3d9 100644
 From 5a826a59c40dce84dfb6ccef79e1534421fb26ac Mon Sep 17 00:00:00 2001
 From: Philipp Zabel <p.zabel@pengutronix.de>
 Date: Tue, 3 Sep 2019 17:35:16 +0200
-Subject: [PATCH 09/14] h264: extract nal_ref_idc and nal_unit_type
+Subject: [PATCH 09/15] h264: extract nal_ref_idc and nal_unit_type
 
 Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
 ---
@@ -631,7 +631,7 @@ index ecbb3d9..a0cf687 100644
 From 02fb9461992375c99d6b9c755cdddd44933cc8b6 Mon Sep 17 00:00:00 2001
 From: Philipp Zabel <p.zabel@pengutronix.de>
 Date: Thu, 5 Sep 2019 10:34:01 +0200
-Subject: [PATCH 10/14] h264: set max_num_ref_frames in SPS
+Subject: [PATCH 10/15] h264: set max_num_ref_frames in SPS
 
 Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
 ---
@@ -657,7 +657,7 @@ index a0cf687..c09fa72 100644
 From 24105528d7fa8da2b9850031f17393587d5f3a53 Mon Sep 17 00:00:00 2001
 From: Philipp Zabel <p.zabel@pengutronix.de>
 Date: Thu, 5 Sep 2019 10:33:44 +0200
-Subject: [PATCH 11/14] h264: set profile_idc in SPS
+Subject: [PATCH 11/15] h264: set profile_idc in SPS
 
 Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
 ---
@@ -740,7 +740,7 @@ index 819fdbd..a65dd7f 100644
 From b9d72c4414872fff4d635afc1dba2725dd1fd5da Mon Sep 17 00:00:00 2001
 From: "@noneucat" <@noneucat>
 Date: Thu, 12 Aug 2021 12:06:50 +0000
-Subject: [PATCH 12/14] Update backend for kernel 5.14 (POC)
+Subject: [PATCH 12/15] Update backend for kernel 5.14 (POC)
 
 This commit reworks the codebase so that it builds and functions in
 Linux 5.14. This comes with the following caveat:
@@ -1204,7 +1204,7 @@ index c6fa833..4bce33f 100644
 From 04adb791e7ada058ac14a87bc6caa8c608903fa0 Mon Sep 17 00:00:00 2001
 From: "@noneucat" <@noneucat>
 Date: Thu, 12 Aug 2021 12:22:55 +0000
-Subject: [PATCH 13/14] Don't advertise broken profiles
+Subject: [PATCH 13/15] Don't advertise broken profiles
 
 ---
  src/config.c | 11 +++++------
@@ -1245,7 +1245,7 @@ index 60a63ff..2d5e202 100644
 From 5a4bc9aa97f3ee600c7ed51dd4ae6d409d5f78e8 Mon Sep 17 00:00:00 2001
 From: Luca Magrone <luca@magrone.cc>
 Date: Thu, 27 Oct 2022 02:41:25 +0200
-Subject: [PATCH 14/14] Change default pixel format to hevc
+Subject: [PATCH 14/15] Change default pixel format to hevc
 
 ---
  src/surface.c | 2 +-
@@ -1264,6 +1264,31 @@ index 478f0cc..b519a46 100644
  	unsigned int output_type = v4l2_type_video_output(false);
  
  	if (!SET_FORMAT_OF_OUTPUT_ONCE) {
+-- 
+2.37.3
+
+
+From a0b920663b392da38e50de838a071193919a5bb8 Mon Sep 17 00:00:00 2001
+From: Luca Magrone <luca@magrone.cc>
+Date: Thu, 27 Oct 2022 03:00:51 +0200
+Subject: [PATCH 15/15] Add missing header needed by kernel 5.14
+
+---
+ src/surface.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/surface.c b/src/surface.c
+index b519a46..2ff43ed 100644
+--- a/src/surface.c
++++ b/src/surface.c
+@@ -40,6 +40,7 @@
+ #include <va/va_drmcommon.h>
+ #include <drm_fourcc.h>
+ #include <linux/videodev2.h>
++#include <media/hevc-ctrls.h>
+ 
+ #include "media.h"
+ #include "utils.h"
 -- 
 2.37.3
 
